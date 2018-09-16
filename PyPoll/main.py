@@ -32,10 +32,18 @@ with open(ElectionCSV, 'r') as csvfile:
         else:
             vote_tooley += 1
 
-    percent_khan = vote_khan / votes_cast
+    percent_khan = (vote_khan / votes_cast)
     percent_correy = vote_correy / votes_cast
     percent_li = vote_li / votes_cast
     percent_tooley = vote_tooley / votes_cast
+
+    # Find the winner of the election based on popular vote
+    candidate_list = ["Khan", "Correy", "Li", "O'Tooley"]
+    votes = [vote_khan, vote_correy, vote_li, vote_tooley]
+
+    vote_cast_dict = dict(zip(candidate_list, votes))
+    key = max(vote_cast_dict, key=vote_cast_dict.get)
+
 
     print("Election Results")
     print("---------------------")
@@ -46,5 +54,32 @@ with open(ElectionCSV, 'r') as csvfile:
     print("Li: " + "{:.3%}".format(percent_li) + " " + (str(vote_li)))
     print("O'Tooley: " + "{:.3%}".format(percent_tooley) + " " + (str(vote_tooley)))
     print("---------------------")
-    print("Winner: ")
+    print("Winner: " + key)
     print("---------------------")
+
+#  Export a text file with the results
+
+result_file = 'C:/Users/dbik/Documents/GitHub/python-challenge/PyPoll/Summary_Election.txt'
+
+with open(result_file, 'w') as file:
+    file.write("Election Results")
+    file.write("\n")
+    file.write("---------------------")
+    file.write("\n")
+    file.write("Total Votes: " + str(votes_cast))
+    file.write("\n")
+    file.write("---------------------")
+    file.write("\n")
+    file.write("Khan: " + "{:.3%}".format(percent_khan) + " " + (str(vote_khan)))
+    file.write("\n")
+    file.write("Correy: " + "{:.3%}".format(percent_correy) + " " + (str(vote_correy)))
+    file.write("\n")
+    file.write("Li: " + "{:.3%}".format(percent_li) + " " + (str(vote_li)))
+    file.write("\n")
+    file.write("O'Tooley: " + "{:.3%}".format(percent_tooley) + " " + (str(vote_tooley)))
+    file.write("\n")
+    file.write("---------------------")
+    file.write("\n")
+    file.write("Winner: " + key)
+    file.write("\n")
+    file.write("---------------------")
