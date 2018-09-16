@@ -1,3 +1,4 @@
+
 PyBank
 
 This Python script analyzes a dataset of financial records composed of two columns: Date and Profit/Losses. 
@@ -9,6 +10,8 @@ The script will calculate each of the following:
   - The greatest increase in profits (date and amount) over the entire period
   - The greatest decrease in losses (date and amount) over the entire period
   - Print the analysis to the terminal and export a text file with the results.
+  
+  
   
   
 PyPoll
